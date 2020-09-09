@@ -1,0 +1,123 @@
+header { 
+	width: 100%;
+	height: 15.5%;
+	box-shadow: 2px 0 7px;
+	border-radius: 3px;
+	margin: 0;
+	font-family: 'Montserrat', sans-serif;
+	background-color: #d3d4d6; /* цвет меню #e8e8e8 */
+	text-align: center;
+}
+body {
+	/* background: #d8d7dc;  цвет заднего фона */
+	background-image: url(image/fon.jpg);
+	background-repeat: repeat;
+	align-content: center;
+}
+.content {
+	background-color: #f0f1f4; /* цвет заднего фона под текстом #f4f4f2 */
+	border-radius: 3px;
+	box-shadow: 2px 0 7px;
+	height: auto;
+    width: 70%;
+    margin: 6px auto 10px auto;
+    padding: 10px 25px 20px;
+    position: relative;
+    align-content: center;
+}
+.format {
+	margin-left: 5%;
+}
+p {
+	color: #1b1210;
+	font-size: 21;
+}
+b {
+	font-size: 22;
+	font-family: Trebuchet MS;
+}
+h1, h2 {
+	text-align: center;
+	color: 686868;
+}
+
+/* Далее идут стили меню и логотипа */
+
+.logo {
+	margin-bottom: 2%;
+	margin-left: 3%;
+	float: left;
+	display: inline;
+}
+.name {
+	float:left;
+	display: inline;
+	color: #03426A;
+	margin-left: 1%;
+	margin-top: 2.25%;
+}
+ul {
+	margin: 0;
+	margin-right: 27%;
+	margin-top: 1%;
+	padding-left: 0;
+	list-style: none;
+	float: right;
+	height: 70px;
+	line-height: 70px;
+	text-align:center;
+	display: inline;
+}
+a {
+	text-decoration: none;
+	display: inline-block;
+	position: relative;
+}
+a b {
+	font-size: 21;
+}
+li a {
+	color: #72747a; /* цвет названий в меню */
+	text-transform: uppercase;
+}
+li {
+	display: inline-block;
+	margin-left: 25px;
+	transition: .5s linear;
+}
+li a:after {
+	content: "";
+	width: 0;
+	height: 2px;
+	position: absolute;
+	left: 0;
+	bottom: 20px;
+	background: #72747a; /* цвет подчеркивания */
+	transition: all 0.5s linear;  
+}
+li a:hover:after{
+	width: 100%;
+}
+@media screen and (max-width:574px) {
+	ul {
+		float: none;
+		margin: 0 25px;
+	}
+	li:first-of-type {margin-left:0}
+}
+@media screen and (max-width:493px) {
+	ul {
+		height: auto;
+		margin: 25px 25px 0 25px;
+		line-height: 50px;
+	}
+	li {
+		display: block;
+		margin: 0;
+	}
+	li:hover {
+		background: rgba(0,0,0,.1)
+	}
+	li a:after {
+		content: none;
+	}
