@@ -39,10 +39,10 @@ def get_text(url):
         else:
             href_dict[alt] = img.attrs['src']
 
-    text_list.append(href_dict)
-
     for span in soup.find_all('span'):
         text_list.append(span.string)
+        
+    text_list.append(href_dict)
 
     return text_list
 
