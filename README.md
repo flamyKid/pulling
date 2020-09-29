@@ -13,3 +13,5 @@ I was writing my own site, which will check for matches between the link and the
 
 Especially, I don't think anybody else would spend so much time looking for extracting text from other extensions.
 There are no such libraries that really work, for example, on windows. Just no! (by now)
+
+прежде чем появиться в том виде, в котором вы его видете, мой код и идея прошли много этапов. Но началось все с того, что мне на карантине(в 2020 году) отправили домашнее задание
