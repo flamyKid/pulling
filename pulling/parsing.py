@@ -55,20 +55,16 @@ def find_text(url, pattern_list):
     text_list = get_text(url)
 
     for elem in text_list:
-        type_elem = isinstance(elem, str)
-        if type_elem:
+        if isinstance(elem, str):
             for pattern in pattern_list:
                 match = re.search(pattern.lower(), elem.lower())
                 if match:
                     match_dict[elem] = pattern
-        else:
-            type_elem = isinstance(elem, dict)
-            if type_elem:
-                if elem:
-                    for tag, href in elem.items():
-                        for pattern in pattern_list:
-                            match = re.search(pattern.lower(), tag.lower())
-                            if match:
-                                match_dict[tag] = href
+        elif isinstance(elem, dict) and elem:
+            for tag, href in elem.items():
+                for pattern in pattern_list:
+                    match = re.search(pattern.lower(), tag.lower())
+                    if match:
+                        match_dict[tag] = href
 
     return match_dict
