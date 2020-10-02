@@ -9,6 +9,3 @@ In the future, I want to parse .orc .rcf .parquet .feather (and one day .doc .od
 
 ## Creation idea 
 Before appearing as you see it, my code and idea have gone through many stages. But it all started when I was quarantined (in 2020) and my homework was sent in a file with the extension .docx. And Word hung up on me and didn't want to open the homemade file. And I came up with a brilliant idea - to write a parser to pull out my school lesson. Then I began to expand my parser and write a web platform for parsing (but there was an unpleasant bug from which I did not put it on hosting). And then the code for this site I decided to rewrite for the repository.
-
-Especially, I don't think anybody else would spend so much time looking for extracting text from other extensions.
-There are no such libraries that really work, for example, on windows. Just no! (by now)
