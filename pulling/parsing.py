@@ -41,10 +41,8 @@ def get_text(url):
 
     for span in soup.find_all('span'):
         text_list.append(span.string)
-        
-    text_list.append(href_dict)
 
-    return text_list
+    return text_list, href_dict
 
 
 def find_text(url, pattern_list):
@@ -52,19 +50,20 @@ def find_text(url, pattern_list):
     match_dict = dict()
 
     # получение текста из файла
-    text_list = get_text(url)
+    text_list, href_dict = get_text(url)
 
     for elem in text_list:
-        if isinstance(elem, str):
+        if elem:
             for pattern in pattern_list:
                 match = re.search(pattern.lower(), elem.lower())
                 if match:
                     match_dict[elem] = pattern
-        elif isinstance(elem, dict) and elem:
-            for tag, href in elem.items():
-                for pattern in pattern_list:
-                    match = re.search(pattern.lower(), tag.lower())
-                    if match:
-                        match_dict[tag] = href
+
+    for tag, href in href_dict.items():
+        if tag:
+            for pattern in pattern_list:
+                match = re.search(pattern.lower(), tag.lower())
+                if match:
+                    match_dict[tag] = href
 
     return match_dict
