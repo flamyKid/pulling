@@ -10,18 +10,21 @@ def get_text(url):
     img_list = list()
     video_list = list()
     audio_list = list()
-    href_dict = dict()  # словарь со всеми ссылками
+    href_dict = dict()  # словарь с ссылками
+
+    tags_list = ['p', 'h', 'b', 'big', 'small', 'i', 'strong', 'sub', 'sup', 'ins', 'del']  # теги, содержащие текст
 
     r = requests.get(url)
     soup = BeautifulSoup(r.text, 'html.parser')
 
-    # ВЫТАСКИВАНИЕ ТЕКСТА ИЗ ТЕГОВ <p>
-    for tag in soup.findAll('p'):
-        if tag.string:
-            strings = tag.string
-            lines = strings.split('. ')
-            for line in lines:  # это предложение
-                text_list.append(line)
+    # ВЫТАСКИВАНИЕ ТЕКСТА ИЗ ТЕГОВ СОДЕРЖАЩИХ ТЕКСТ
+    for elem in tags_list:
+        for tag in soup.findAll(elem):
+            if tag.string:
+                strings = tag.string
+                lines = strings.split('. ')
+                for line in lines:  # это предложение
+                    text_list.append(line)
 
     # ВЫТАСКИВАНИЕ ТЕКСТОВ ИЗ ТЕГОВ <h>
     for h in ('h1', 'h2', 'h3', 'h4', 'h5', 'h6'):
@@ -97,4 +100,3 @@ def find_text(url, pattern_list):
                     match_dict[tag] = href
 
     return match_dict
-
