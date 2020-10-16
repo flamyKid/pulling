@@ -10,7 +10,7 @@ def get_text(url):
     img_list = list()
     video_list = list()
     audio_list = list()
-    href_dict = dict()  # словарь с ссылками
+    href_dict = dict()  # словарь со всеми ссылками
 
     r = requests.get(url)
     soup = BeautifulSoup(r.text, 'html.parser')
