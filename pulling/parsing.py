@@ -12,7 +12,7 @@ def get_text(url):
     audio_list = list()
     href_dict = dict()  # словарь с ссылками
 
-    tags_list = ['p', 'h', 'b', 'big', 'small', 'i', 'strong', 'sub', 'sup', 'ins', 'del']  # теги, содержащие текст
+    tags_list = ['p', 'h', 'b', 'big', 'small', 'i', 'strong', 'sub', 'sup', 'ins', 'del', 'th']  # теги, содержащие текст
 
     r = requests.get(url)
     soup = BeautifulSoup(r.text, 'html.parser')
