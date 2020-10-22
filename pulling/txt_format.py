@@ -32,8 +32,8 @@ def find_text(path, pattern_list, coding='utf-8'):
 def write_text(path, line_list, mode='w', coding='utf-8'):
 
     with open(path, mode, encoding=coding) as file:
-        for elem in line_list:
-            file.write(elem)
+        for string in line_list:
+            file.write(string)
 
         print('Writing complete')
 
