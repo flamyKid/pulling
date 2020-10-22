@@ -47,7 +47,7 @@ def find_data(path, pattern_list):
         else:
             add_to_dict(elem, parent)
 
-    data_dict = get_data(path)  # данные полученные из файла
+    data_dict = get_data(path)
 
     for key, value in data_dict.items():
         check_type(key, None)
@@ -115,7 +115,7 @@ def replace_data(path, new_path, replacement_dict, mode='w'):
         else:
             replace(elem)
 
-    data_dict = get_data(path)  # данные полученные из файла
+    data_dict = get_data(path)
 
     for key, value in data_dict.copy().items():  # .copy() для избежания RuntimeError
         check_type(key)
