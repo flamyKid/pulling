@@ -17,7 +17,6 @@ def find_text(path, pattern_list, coding='utf-8'):
     # возвращаемый словарь с совпадениями
     match_dict = dict()
 
-    # получение текста из файла
     text_list = get_text(path, coding)
 
     for string in text_list:
