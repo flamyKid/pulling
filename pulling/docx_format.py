@@ -1,9 +1,10 @@
 import re
+import zipfile
+
 try:
     from xml.etree.cElementTree import XML
 except ImportError:
     from xml.etree.ElementTree import XML
-import zipfile
 
 
 def get_text(path):
