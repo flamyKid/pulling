@@ -32,26 +32,26 @@ def get_text(url):
             text_list.append(tag.string)
 
     # ВЫТАСКИВАНИЕ ТЕКСТА ИЗ ТЕГОВ <a>
-    for tag in soup.findAll('a'):
+    for a in soup.findAll('a'):
         if tag.string:
-            href_dict[tag.string] = tag.get('href')
+            href_dict[a.string] = a.get('href')
 
     # ВЫТАСКИВАНИЕ ТЕКСТА ИЗ ТЕГОВ <audio>
-    for tag in soup.findAll('audio'):
-        if tag:
-            audio_tag = BeautifulSoup(str(tag), 'html.parser')  # что бы искал внутри тега
-            if tag.get('src'):
-                audio_src_list.append(tag.get('src'))
+    for audio in soup.findAll('audio'):
+        if audio:
+            audio_tag = BeautifulSoup(str(audio), 'html.parser')  # что бы искал внутри тега
+            if audio.get('src'):
+                audio_src_list.append(audio.get('src'))
             for source in audio_tag.findAll('source'):  # для тега <source>
                 if source and source.get('src'):
                     audio_src_list.append(source.get('src'))
 
     # ВЫТАСКИВАНИЕ ТЕКСТА ИЗ ТЕГОВ <video>
-    for tag in soup.findAll('video'):
-        if tag:
-            video_tag = BeautifulSoup(str(tag), 'html.parser')  # что бы искал внутри тега
-            if tag.get('src'):
-                video_src_list.append(tag.get('src'))
+    for video in soup.findAll('video'):
+        if video:
+            video_tag = BeautifulSoup(str(video), 'html.parser')  # что бы искал внутри тега
+            if video.get('src'):
+                video_src_list.append(video.get('src'))
             for source in video_tag.findAll('source'):   # для тега <source>
                 if source and source.get('src'):
                     video_src_list.append(source.get('src'))
