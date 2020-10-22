@@ -34,7 +34,6 @@ def find_text(path, pattern_list):
     # возвращаемый словарь с совпадениями
     match_dict = dict()
 
-    # получение текста из файла
     text_list = get_text(path)
 
     for string in text_list:
