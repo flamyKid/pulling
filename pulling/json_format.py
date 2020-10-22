@@ -16,13 +16,13 @@ def find_data(path, pattern_list):
     match_dict = dict()
 
     # проверка элементов внутренних словарей
-    def check_dict(Dict):
+    def check_elem_in_dict(Dict):
         for key, value in Dict.items():
             check_type(key, Dict)
             check_type(value, Dict)
 
     # проверка элементов внутренних списков
-    def check_list(List):
+    def check_elem_in_list(List):
         for elem in List:
             check_type(elem, List)
 
@@ -41,9 +41,9 @@ def find_data(path, pattern_list):
         if isinstance(elem, (int, float)):
             add_to_dict(elem, parent)
         elif isinstance(elem, list):
-            check_list(elem)
+            check_elem_in_list(elem)
         elif isinstance(elem, dict):
-            check_dict(elem)
+            check_elem_in_dict(elem)
         else:
             add_to_dict(elem, parent)
 
@@ -68,7 +68,7 @@ def write_data(path, data_dict, mode='w'):
 def replace_data(path, new_path, replacement_dict, mode='w'):
 
     # проверка элементов внутренних словарей
-    def check_dict(Dict):
+    def check_elem_in_dict(Dict):
         for old_value, new_value in replacement_dict.items():
             for key, value in Dict.copy().items():  # .copy() для избежания RuntimeError
                 if isinstance(value, list):
@@ -82,7 +82,7 @@ def replace_data(path, new_path, replacement_dict, mode='w'):
                         Dict[new_value] = Dict.pop(key)  # замена ключа
 
     # проверка элементов внутренних списков
-    def check_list(List):
+    def check_elem_in_list(List):
         for elem in List:
             if isinstance(elem, dict):
                 check_type(elem)
@@ -109,9 +109,9 @@ def replace_data(path, new_path, replacement_dict, mode='w'):
         if isinstance(elem, (int, float)):
             replace(elem)
         elif isinstance(elem, list):
-            check_list(elem)
+            check_elem_in_list(elem)
         elif isinstance(elem, dict):
-            check_dict(elem)
+            check_elem_in_dict(elem)
         else:
             replace(elem)
 
