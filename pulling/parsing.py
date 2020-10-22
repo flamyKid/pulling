@@ -39,20 +39,20 @@ def get_text(url):
     # ВЫТАСКИВАНИЕ ТЕКСТА ИЗ ТЕГОВ <audio>
     for tag in soup.findAll('audio'):
         if tag:
-            audio = BeautifulSoup(str(tag), 'html.parser')  # что бы искал внутри тега
+            audio_tag = BeautifulSoup(str(tag), 'html.parser')  # что бы искал внутри тега
             if tag.get('src'):
                 audio_list.append(tag.get('src'))
-            for source in audio.findAll('source'):  # для тега <source>
+            for source in audio_tag.findAll('source'):  # для тега <source>
                 if source and source.get('src'):
                     audio_list.append(source.get('src'))
 
     # ВЫТАСКИВАНИЕ ТЕКСТА ИЗ ТЕГОВ <video>
     for tag in soup.findAll('video'):
         if tag:
-            video = BeautifulSoup(str(tag), 'html.parser')  # что бы искал внутри тега
+            video_tag = BeautifulSoup(str(tag), 'html.parser')  # что бы искал внутри тега
             if tag.get('src'):
                 video_list.append(tag.get('src'))
-            for source in video.findAll('source'):   # для тега <source>
+            for source in video_tag.findAll('source'):   # для тега <source>
                 if source and source.get('src'):
                     video_list.append(source.get('src'))
 
