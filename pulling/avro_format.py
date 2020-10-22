@@ -19,7 +19,7 @@ def find_data(path, schema, pattern_list):
     # возвращаемый словарь с совпадениями
     match_dict = dict()
 
-    data_list = get_data(path, schema)  # данные полученные из файла
+    data_list = get_data(path, schema)
 
     for value_dict in data_list:
         for pattern in pattern_list:
@@ -29,7 +29,7 @@ def find_data(path, schema, pattern_list):
                         match = re.search(pattern.lower(), elem.lower())
                         if match:
                             match_dict[pattern] = value_dict
-                    except:  # если попадется цифра
+                    except Exception:  # если попадется цифра
                         match = re.search(pattern.lower(), str(elem))
                         if match:
                             match_dict[pattern] = value_dict
@@ -48,7 +48,7 @@ def write_data(path, schema, data_list, mode='wb'):
 
 
 def replace_data(path, schema, new_path, replacement_dict):
-    text_list = get_data(path, schema)  # данные полученные из файла
+    text_list = get_data(path, schema)
 
     for value_dict in text_list:
         for old_value, new_value in replacement_dict.items():
