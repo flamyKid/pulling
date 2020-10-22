@@ -82,7 +82,6 @@ def find_text(url, pattern_list):
     # возвращаемый словарь с совпадениями
     match_dict = dict()
 
-    # получение текста из файла
     text_list, href_dict = get_text(url)
 
     for elem in text_list:
