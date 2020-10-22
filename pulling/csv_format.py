@@ -23,7 +23,7 @@ def find_data(path, pattern_list):
     # возвращаемый список с совпадениями
     match_list = list()
 
-    data_list = get_data(path)  # данные полученные из файла
+    data_list = get_data(path)
 
     for row in data_list:  # строки
         for column in row:  # столбец
@@ -48,7 +48,7 @@ def write_data(path, data_list, mode='w'):
 
 
 def replace_data(path, new_path, replacement_dict):
-    data_list = get_data(path)  # данные полученные из файла
+    data_list = get_data(path)
 
     for row in data_list:  # строки
         for column in row:  # столбец
