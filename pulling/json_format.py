@@ -58,7 +58,7 @@ def find_data(path, pattern_list):
 
 def write_data(path, data_dict, mode='w'):
     with open(path, mode) as file:
-        json.dump(data_dict, file)
+        json.dump(data_dict, file, indent=4, ensure_ascii=False)  # аргументы для отступов и кодировки
 
         print('Writing complete')
 
