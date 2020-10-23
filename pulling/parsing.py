@@ -14,8 +14,8 @@ def get_text(url):
 
     tags_list = ['p', 'h', 'b', 'big', 'small', 'i', 'strong', 'sub', 'sup', 'ins', 'del', 'th']  # теги, содержащие текст
 
-    r = requests.get(url)
-    soup = BeautifulSoup(r.text, 'html.parser')
+    page = requests.get(url)
+    soup = BeautifulSoup(page.text, 'lxml')
 
     # ВЫТАСКИВАНИЕ ТЕКСТА ИЗ ТЕГОВ СОДЕРЖАЩИХ ТЕКСТ
     for elem in tags_list:
@@ -39,7 +39,7 @@ def get_text(url):
     # ВЫТАСКИВАНИЕ ТЕКСТА ИЗ ТЕГОВ <audio>
     for audio in soup.findAll('audio'):
         if audio:
-            audio_tag = BeautifulSoup(str(audio), 'html.parser')  # что бы искал внутри тега
+            audio_tag = BeautifulSoup(str(audio), 'lxml')  # что бы искал внутри тега
             if audio.get('src'):
                 audio_src_list.append(audio.get('src'))
             for source in audio_tag.findAll('source'):  # для тега <source>
@@ -49,7 +49,7 @@ def get_text(url):
     # ВЫТАСКИВАНИЕ ТЕКСТА ИЗ ТЕГОВ <video>
     for video in soup.findAll('video'):
         if video:
-            video_tag = BeautifulSoup(str(video), 'html.parser')  # что бы искал внутри тега
+            video_tag = BeautifulSoup(str(video), 'lxml')  # что бы искал внутри тега
             if video.get('src'):
                 video_src_list.append(video.get('src'))
             for source in video_tag.findAll('source'):   # для тега <source>
