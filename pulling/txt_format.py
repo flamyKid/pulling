@@ -1,7 +1,7 @@
 import re
 
 
-class txt:
+class TXT:
 
     def get_text(self, path, coding='utf-8'):
         # возвращаемый список с текстом
@@ -63,3 +63,26 @@ class txt:
             text_list[index] = edit_line  # изменение строки на редактированную строку
 
         self.write_text(new_path, text_list, 'w', new_coding)
+
+
+if __name__ == '__main__':
+    text = ['Файл (англ', 'file) — именованная область данных на носителе информации.\n', '\n',
+            'Работа с файлами реализуется средствами операционных систем',
+            'Многие операционные системы приравнивают к файлам и обрабатывают сходным образом и другие ресурсы:\n',
+            '\n', 'области данных (необязательно на диске);\n',
+            'устройства — как физические, например, порты или принтеры, так и виртуальные;\n',
+            'потоки данных (именованный канал);\n', 'сетевые ресурсы, сокеты;\n',
+            'прочие объекты операционной системы.']
+
+    path = 'test/test.txt'
+    txt = TXT()
+
+    txt.write_text(path, text)
+
+    found_text = txt.find_text(path, ['file'])
+    print(found_text)
+
+    txt.replace_text(path, path, {'Файл': 'File'})
+
+    result_text = txt.get_text(path)
+    print(result_text)
