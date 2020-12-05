@@ -2,7 +2,7 @@ import re
 import fastavro
 
 
-class avro:
+class AVRO:
 
     def get_data(self, path, schema):
         # возвращаемый список с данными
@@ -70,3 +70,38 @@ class avro:
         self.write_data(new_path, schema, data_list)
 
         return schema
+
+
+if __name__ == '__main__':
+    schema = {
+        'doc': 'A weather reading.',
+        'name': 'Weather',
+        'namespace': 'test',
+        'type': 'record',
+        'fields': [
+            {'name': 'station', 'type': 'string'},
+            {'name': 'time', 'type': 'long'},
+            {'name': 'temp', 'type': 'int'},
+        ],
+    }
+
+    records = [
+        {'station': '011990-99999', 'temp': 0, 'time': 1433269388},
+        {'station': '011990-99999', 'temp': 22, 'time': 1433270389},
+        {'station': '011990-99999', 'temp': -11, 'time': 1433273379},
+        {'station': '012650-99999', 'temp': 111, 'time': 1433275478},
+    ]
+
+    path = 'test/test.avro'
+    avro = AVRO()
+
+    avro.write_data(path, schema, records)
+
+    found_data = avro.find_data(path, schema, ['temp'])
+    print(found_data)
+
+    new_schema = avro.replace_data(path, schema, path, {'011990-99999': 'Dore', 'temp': 'ityas'})
+    print(new_schema)
+
+    result_data = avro.get_data(path, schema)
+    print(result_data)
