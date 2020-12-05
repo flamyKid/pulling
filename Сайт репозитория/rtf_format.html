@@ -1,0 +1,56 @@
+<html>
+	<head>
+		<meta charset=utf-8>
+		<title>Research | .rtf</title>
+		<link rel="stylesheet" href="styles.css">
+		<header>
+			<h1 class="name"><a href="main.html">ReSearch</a></h1>
+			<ul class="menu">
+				<li><a href="txt_format.html"><b>.txt</b></a></li>
+				<li><a href="rtf_format.html"><b>.rtf</b></a></li>  
+		    	<li><a href="pdf_format.html"><b>.pdf</b></a></li>
+		    	<li><a href="odt_format.html"><b>.odt</b></a></li>
+		    	<li><a href="docx_format.html"><b>.docx</b></a></li>
+		    	<li><a href="doc_format.html"><b>.doc</b></a></li>
+				<li><a href="csv_format.html"><b>.csv</b></a></li>
+				<li><a href="orc_format.html"><b>.orc</b></a></li>
+				<li><a href="avro_format.html"><b>.avro</b></a></li>
+				<li><a href="json_format.html"><b>.json</b></a></li>  
+			    <li><a href="parquet_format.html"><b>.parquet</b></a></li>
+				<li><a href="feather_format.html"><b>.feather</b></a></li>
+			    <li><a href="rcf_format.html"><b>.rcf</b></a></li>
+			    <li><a href="parsing.html"><b>parsing</b></a></li>
+		    </ul>
+		</header>
+	</head>
+	<body link="#72747a" vlink="#72747a" alink="#464E56">
+		<div class="content">
+			<h1><u>Формат .rtf</u></h1>
+			<p>Вызов функции этого формата:</p>
+			<b>research.txt_format.функция(аргуметы)</b>
+			<h2>Возможные методы:</h2>
+			<p><b>get_text(path, coding='utf-8')</b> - функция, которая возвращает два списка, первый - текст из файла, где элементы списка - это предложения в файле, а второй - стили текста.</p>
+			<p>path - путь к нужному файлу.</p>
+			<p>coding - кодировка для декодирования. По умолчанию стоит кодировка utf-8.</p>
+			<br>
+			<p><b>find_text(path, pattern_list, coding='utf-8')</b> - функция, которая возвращает совпадения из текста файла в виде словаря, где ключ - это совпадение, а значение - это шаблон поиска по которому было найдено совпадение.</p>
+			<p>path - путь до нужного файла.</p>
+			<p>pattern_list - список с шаблонами, где каждый шаблон является отдельным элементом.</p>
+			<p>coding - кодировка для декодирования. По умолчанию стоит кодировка utf-8.</p>
+			<br>
+			<p><b>write_text(path, line_list, mode='w', coding='utf-8')</b> - функция, которая записывает текст в файл и сохраняет его.</p>
+			<p>path - путь файла в который надо записать.</p>
+			<p>line_list - список со строками, которые нужно сохранить в файле.</p>
+			<p>mode - режим открытия файла. По умолчанию стоит режим чтения 'w'.</p>
+			<p>coding - кодировка для декодирования. По умолчанию стоит кодировка utf-8.</p>
+			<br>
+			<p><b>replace_text(path, new_path, word_dict, coding='utf-8', new_coding='utf-8')</b> - функция, которая принимает словарь со словами, заменяет слова и сохраняет эти изменения в новом файле.</p>
+			<p>path - путь файла из которого надо взять текст.</p>
+			<p>new_path - путь файла, в который надо записать изменения. Если ввести тот же путь, то изменения сохранятся в этом файле.</p>
+			<p>word_dict - словарь со словами, где ключ - это слово, которое надо заменить, а значение - слово на которое надо заменить.</p>
+			<p>coding - кодировка для декодирования. По умолчанию стоит кодировка utf-8.</p>
+			<p>new_coding - кодировка для кодирования. По умолчанию стоит кодировка utf-8.</p>
+		</div>
+	</body>
+	<footer></footer>
+</html>
