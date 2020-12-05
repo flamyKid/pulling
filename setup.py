@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(name='pulling',
-      version='1.1',
+      version='1.0',
       packages=['pulling'],
       license='Apache License 2.0',
       author='ItYaS',
