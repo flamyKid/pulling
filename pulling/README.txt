@@ -1,7 +1,7 @@
 Pulling
 =============
 Pulling is an open source python repository for parsing data from files and web pages. Documentation in English can be found here - https://github.com/ItYaS/pulling/wiki.
-The repository now supports .txt .rtf .pdf .docx .csv .avro .json formats and parsing data from tags(p, h, a, img, span) of web pages.
+The repository now supports .txt .rtf .pdf .docx .csv .avro .json formats and parsing data from tags of web pages.
 
 Future
 ======================
@@ -16,3 +16,12 @@ I was writing my own site, which will check for matches between the link and the
 
 Especially, I don't think anybody else would spend so much time looking for extracting text from other extensions.
 There are no such libraries that really work, for example, on windows. Just no! (by now)
+
+Version 1.2
+======================
+- At first, several things were added:
+	1. Link parsing from audio and video tags
+	2. Improved data parsing from the img tag
+	3. Parsing text from such tags b, big, small, strong, i, sub, sup, span, ins, del, th
+- Secondly, the parsing function now returns 2 dictionaries. The first one with data from tags containing text, and the second one with links.
+- The code readability was also fixed and all unnecessary loops were removed.
