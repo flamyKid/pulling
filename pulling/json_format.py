@@ -29,13 +29,36 @@ class JSON:
 
         # добавление элементов в словарь
         def add_to_dict(elem, parent):
+
+            def add_dict_to_list(List, Dict):
+                new_all_elements = []
+
+                # сюда попадает словарь из одного элемента
+                if isinstance(List, dict) == True:
+                    new_all_elements.append(List)
+                else:
+                    for dicts in List:
+                        new_all_elements.append(dicts)
+
+                new_all_elements.append(Dict)
+
+                return new_all_elements
+
             for pattern in pattern_list:
                 match = re.search(pattern.lower(), str(elem).lower())
                 if match:
                     if parent:
-                        match_dict[elem] = parent
+                        try:  # если есть несколько ключей с одним именем
+                            if match_dict[elem]:
+                                if len(match_dict[elem]) >= 2:
+                                    all_elements = add_dict_to_list(match_dict[elem], parent)
+                                else:
+                                    all_elements = [match_dict[elem], parent]  # добавление всех старых
+                                match_dict[elem] = all_elements
+                        except KeyError:  # если такого же имени у ключа не было
+                            match_dict[elem] = parent
                     else:  # если родитель - самый первый словарь
-                        match_dict['first dict'] = value
+                        match_dict[f'child of this element({elem})'] = value
 
         # проверка на тип и вызов нужных функций
         def check_type(elem, parent):  # аргумент parent для того, что бы не копировать начальный словарь
@@ -108,15 +131,18 @@ class JSON:
 
 
 if __name__ == '__main__':
-    data = {'int': 5, 'list': [1, 2, 3, {'str': 'ok!', 'list': [1, 2]}], 'president': {'name': 'Zaphod Beeblebrox', 'species': 'Betelgeusian'}}
+    data = {'int': {'list': 5, 'fl': 4, 'ok!': 555}, 'list': [1, 2, 3, {'str': 'ok!', 'list': [1, 2]}], 'president': {'name': 'Zaphod Beeblebrox', 'species': 'Betelgeusian', 'list': 5}}
 
     path = 'test/test.json'
     Json = JSON()
 
     Json.write_data(path, data)
 
+    print('__________')
     found_data = Json.find_data(path, ['president', 'ok!', 'list', 'Zaphod Beeblebrox'])
-    print(f"found: {found_data}")
+    for k, v in found_data.items():
+        print(f'{k}: {v}')
+    print('__________')
 
     Json.replace_data(path, path, {'int': 'by', 'ok!': 'ty', 2: '2', 'list': 'fffff'})
 
