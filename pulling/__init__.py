@@ -1,10 +1,9 @@
 import atexit
 
 
-__all__ = ['txt_format', 'rtf_format', 'pdf_format', 'docx_format',
-           'avro_format', 'csv_format', 'json_format']
+__all__ = ['Txt', 'Rtf', 'Pdf', 'Docx', 'Csv', 'Avro', 'Json']
 
-__version__ = '1.3'
+__version__ = '1.4'
 
 
 @atexit.register
