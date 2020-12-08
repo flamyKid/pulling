@@ -30,31 +30,32 @@ class JSON:
         # добавление элементов в словарь
         def add_to_dict(elem, parent):
 
+            # добавление нового словаря в список словарей
             def add_dict_to_list(List, Dict):
-                new_all_elements = []
+                new_elements_list = []
 
-                # сюда попадает словарь из одного элемента
-                if isinstance(List, dict) == True:
-                    new_all_elements.append(List)
-                else:
-                    for dicts in List:
-                        new_all_elements.append(dicts)
+                for dicts in List:
+                    new_elements_list.append(dicts)
 
-                new_all_elements.append(Dict)
+                new_elements_list.append(Dict)
 
-                return new_all_elements
+                return new_elements_list
 
             for pattern in pattern_list:
                 match = re.search(pattern.lower(), str(elem).lower())
                 if match:
                     if parent:
+                        # блок try на случай, если элемента с таким именем не было еще
                         try:  # если есть несколько ключей с одним именем
-                            if match_dict[elem]:
-                                if len(match_dict[elem]) >= 2:
-                                    all_elements = add_dict_to_list(match_dict[elem], parent)
-                                else:
-                                    all_elements = [match_dict[elem], parent]  # добавление всех старых
-                                match_dict[elem] = all_elements
+                            dict_elem = match_dict[elem]
+                            if dict_elem:
+                                # проверка, чтобы словарь с несколькими элементами не прошел
+                                if isinstance(dict_elem, list) and len(dict_elem) >= 2:
+                                    # только для списка со словарями совпадений
+                                    elements_list = add_dict_to_list(dict_elem, parent)
+                                else:  # если такое имя было, но один раз
+                                    elements_list = [dict_elem, parent]  # добавление нового словаря к первому
+                                match_dict[elem] = elements_list
                         except KeyError:  # если такого же имени у ключа не было
                             match_dict[elem] = parent
                     else:  # если родитель - самый первый словарь
@@ -131,7 +132,12 @@ class JSON:
 
 
 if __name__ == '__main__':
-    data = {'int': {'list': 5, 'fl': 4, 'ok!': 555}, 'list': [1, 2, 3, {'str': 'ok!', 'list': [1, 2]}], 'president': {'name': 'Zaphod Beeblebrox', 'species': 'Betelgeusian', 'list': 5}}
+    data = {
+        'int': {'list': 5, 'fl': 4, 'ok!': 555},
+        'list': [1, 2, 3,
+                 {'str': 'ok!', 'list': [1, 2]}],
+        'president': {'name': 'Zaphod Beeblebrox', 'species': 'Betelgeusian', 'list': 5}
+            }
 
     path = 'test/test.json'
     Json = JSON()
@@ -144,7 +150,7 @@ if __name__ == '__main__':
         print(f'{k}: {v}')
     print('__________')
 
-    Json.replace_data(path, path, {'int': 'by', 'ok!': 'ty', 2: '2', 'list': 'fffff'})
+    Json.replace_data(path, path, {'int': 'float', 'ok!': 'okay', 2: '2', 'list': 'List'})
 
     result_data = Json.get_data(path)
     print(result_data)
