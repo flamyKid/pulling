@@ -50,7 +50,7 @@ h1, h2 {
 }
 ul {
 	margin: 0;
-	margin-right: 1.5%;
+	margin-right: 28.5%;
 	margin-top: 1%;
 	padding-left: 0;
 	list-style: none;
@@ -66,7 +66,7 @@ a {
 	position: relative;
 }
 a b {
-	font-size: 17.5;
+	font-size: 22;
 }
 li a {
 	color: #72747a; /* цвет названий в меню */
