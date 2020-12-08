@@ -8,7 +8,7 @@ Call the function of this format:
 path - the path to the desired file.
 
 
-**find_data(path, pattern_list)** - a function that returns matches from a file as a dictionary, where the key is the found element and the value is the parent of the element or the value of the element (for elements of the very first dictionary).
+**find_data(path, pattern_list)** - a function that returns matches from file data in the form of a dictionary, where the key is the search word, and the value is the parent dictionary of the element, if there is only one element with this name, and a list with parents for all elements with the search name.
 
 path - the path to the required file.
 
