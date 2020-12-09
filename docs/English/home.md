@@ -1,20 +1,23 @@
 # Pulling documentation
-**Pulling** is an open source python repository for extracting data from files and web pages.
-To start using the repository, first install python from its [official page](https://www.python.org/downloads/). After that, install the research package through the console.</p>
+**Pulling** is an open source python repository for working with files of different extensions. 
+The repository now supports .txt .rtf .pdf .docx .csv .avro .json formats.
 
-**> pip install pulling**
+To start using the repository, first install python from its [official page](https://www.python.org/downloads/). 
+After that, install the pulling package through the console.
 
-After that you need to import it into a file:
+> **> pip install pulling**
 
-**from pulling import format**
+Further in the documentation there will be such windows:
+> Code will be here (input)
+>> And here's the output (output)
+## Future
+Such a repository can be extended for life. That's what I will do. 
+But the next version (where there will be working from other formats) will not be released soon. 
+So, keep this repository and be patient.
 
-The repository is divided into parts related to formats and operations. This is what a general function call looks like:
-
-**format.method(arguments)**
-
-In the menu you will find possible formats and operations.
-# Communication
-If you have any questions about ReSearch or have problems, please, write adequately! Thank you very much for your understanding.
+In the future, I want to work with .orc .rcf .parquet .feather (and one day .doc .odt), add conversion to other extensions for all formats, add new functions, and new formats.
+## Communication
+If you have any questions about pulling or have problems, please, write adequately! Thank you very much for your understanding.
 
 You can support me or omit me in my profiles:
 

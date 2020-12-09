@@ -1,39 +1,118 @@
 # The .avro format
-Call the function of this format:
+Call the functions of this format:
 
-**pulling.AVRO.function(arguments)**
+> **import pulling.Avro as avro**
+>
+> **avro.function(arguments)**
 ## Possible methods:
-**get_data(path, schema)** is a function that returns data from a file as a list, where list elements are dictionaries in the file.
+**get_data(** *path*, *schema* **)** is a function that returns data from a file as a list, where list elements are dictionaries in the file.
 
-path - the path to the desired file.
+ - *path* is the path to the desired file.
 
-schema - a scheme describing data structure.
-
-
-**find_data(path, schema, pattern_list)** - a function, which returns coincidences from file data as a dictionary, where the key is a search template and the value is a dictionary from the file, which was found by the template.
-
-path - the path to the required file.
-
-schema - a scheme, describing data structure.
-
-pattern_list - a list with templates where each template is a separate list element.
+ - *schema* - scheme, which describes data structure.
 
 
-**write_data(path, schema, data_list, mode='wb')** - a function that writes data to a file and saves it.
+**find_data(** *path*, *schema*, *pattern_list* **)** - a function that returns matches from a file as a dictionary, where the key is a search template and the value is a list with the found matches.
 
-path - the path of the file where the data should be written to.
+ - *path* - is the path to the required file.
 
-data_list - a list with dictionaries of data to be saved to the file.
+ - *schema* - a scheme describing data structure.
 
-mode - file opening mode. You can open it only in binary mode. The default mode is reading 'wb'.
+ - *pattern_list* - a list with templates, where each template is a separate list element.
 
 
-**replace_data(path, schema, new_path, replacement_dict)** - function that accepts dictionary with data, replaces data, saves these changes in a new file and returns the changed schema.
+**write_data(** *path*, *schema*, *data_list*, *mode='wb'* **)** - a function that writes data to a file and saves it.
 
-path - the path of the file from which the data should be taken.
+ - *path* - the path of the file to which data should be written.
 
-schema - a scheme describing data structure.
+ - *data_list* - a list with data dictionaries, which should be saved to the file.
 
-new_path - the path of the file, in which the changes should be written. If you enter the same path, the changes will be saved in this file.
 
-replacement_dict - dictionary with data, where dictionary keys are the value to be replaced, and the value of dictionary elements are the data to be replaced.
+**replace_data(** *path*, *schema*, *new_path*, *replacement_dict* **)** - a function that accepts dictionary with data, replaces data, saves these changes in a new file and returns a new scheme.
+
+ - *path* - the path of the file from which the data should be taken.
+
+ - *schema* - scheme, which describes data structure.
+
+ - *new_path* - path of the file, in which the changes should be written. If you enter the same path, the changes will be saved in this file.
+
+ - *replacement_dict* - data dictionary, where dictionary keys are the value to be replaced, and the value of dictionary elements are the data to be replaced.
+## Code sample
+> import pulling.Avro as avro
+>
+> path = 'path\\file.avro'
+> 
+> data = {
+>
+>       'doc': 'A weather reading.', 
+>
+>       'name': 'Weather', 
+> 
+>       'namespace': 'test', 
+> 
+>       'type': 'record', 
+> 
+>       'fields': [ { 'name': 'station', 'type': 'string' }, 
+> 
+>                   { 'name': 'time', 'type': 'long' }, 
+>
+>                   { 'name': 'temp', 'type': 'int' } ]
+> 
+> }
+>
+> records = [
+> 
+>       { 'station': '1', 'time': 1433269388, 'temp': 0 }, 
+>
+>       { 'station': '2', 'time': 1433270389, 'temp': 22 }, 
+>
+>       { 'station': '3', 'time': 1433273379, 'temp': -11 }, 
+>
+>       { 'station': '4', 'time': 1433275478, 'temp': 111 }
+>
+> ]
+
+> json.write_data(path, schema, records)
+>> Writing complete.
+
+> found_data = json.find_data(path, schema, ['3'])
+> 
+> print(found_data)
+>> { 3: { 'station': '3', 'time': 1433273379, 'temp': -11 } }
+
+> new_schema = json.replace_data(path, schema, path, {'1': 'one', 'temp': 'key'})
+> 
+> print(new_schema)
+>> Writing complete.
+>>
+>> {
+>>
+>> 'doc': 'A weather reading.', 
+>>
+>> 'name': 'Weather', 
+>> 
+>> 'namespace': 'test', 
+>> 
+>> 'type': 'record', 
+>> 
+>> 'fields': [ { 'name': 'station', 'type': 'string' }, 
+>> 
+>>           { 'name': 'time', 'type': 'long' }, 
+>> 
+>>           { 'name': 'key', 'type': 'int' } ]
+>> 
+>> }
+
+> result_data = json.get_data(path, schema)
+> print(result_data)
+>> [
+>> 
+>> { 'station': 'one', 'time': 1433269388, 'key': 0 }, 
+>>
+>> { 'station': '2', 'time': 1433270389, 'key': 22 }, 
+>>
+>> { 'station': '3', 'time': 1433273379, 'key': -11 }, 
+>>
+>> { 'station': '4', 'time': 1433275478, 'key': 111 }
+>>
+>> ]
