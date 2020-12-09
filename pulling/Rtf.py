@@ -38,7 +38,7 @@ def find_text(path, pattern_list, coding='utf-8'):
         for pattern in pattern_list:
             match = re.search(pattern.lower(), string.lower())
             if match:
-                match_dict[string] = pattern
+                match_dict[pattern] = string
 
     return match_dict
 
@@ -49,7 +49,7 @@ def write_text(path, line_list, mode='w', coding='utf-8'):
         for elem in line_list:
             file.write(elem)
 
-        print('Writing complete')
+        print('Writing complete.')
 
         file.close()
 
@@ -89,7 +89,7 @@ if __name__ == '__main__':
             'потоки данных (именованный канал);\n', 'сетевые ресурсы, сокеты;\n',
             'прочие объекты операционной системы.']
 
-    path = 'test/test.rtf'
+    path = 'test\\test.rtf'
 
     write_text(path, text)
 

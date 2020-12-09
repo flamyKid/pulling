@@ -21,7 +21,7 @@ def get_data(path):
 
 def find_data(path, pattern_list):
     # возвращаемый список с совпадениями
-    match_list = list()
+    match_dict = dict()
 
     data_list = get_data(path)  # данные полученные из файла
 
@@ -30,9 +30,9 @@ def find_data(path, pattern_list):
             for pattern in pattern_list:
                 match = re.search(pattern.lower(), column.lower())
                 if match:
-                    match_list.append(row)
+                    match_dict[pattern] = row
 
-    return match_list
+    return match_dict
 
 
 def write_data(path, data_list, mode='w'):
@@ -42,7 +42,7 @@ def write_data(path, data_list, mode='w'):
         for elem in data_list:
             writer.writerow(elem)
 
-        print('Writing complete')
+        print('Writing complete.')
 
         file.close()
 
@@ -61,9 +61,9 @@ def replace_data(path, new_path, replacement_dict):
 
 
 if __name__ == '__main__':
-    data = [['Имя', 'Возраст'], ['ityas', '16'], ['dore', '13']]
+    data = [['Имя', 'Возраст'], ['ItYaS', '16'], ['dore', '13']]
 
-    path = 'test/test.csv'
+    path = 'test\\test.csv'
 
     write_data(path, data)
 

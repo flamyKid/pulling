@@ -29,7 +29,7 @@ def get_text(path):
 
     strings = all_text.split('. ')  # разбиение по предложениям
     for line in strings:
-        lines = line.split('\n')  # разбиение по абацам
+        lines = line.split('\n')  # разбиение по абзацам
         for string in lines:
             text_list.append(string)
 
@@ -47,13 +47,13 @@ def find_text(path, pattern_list):
         for pattern in pattern_list:
             match = re.search(pattern.lower(), string.lower())
             if match:
-                match_dict[string] = pattern
+                match_dict[pattern] = string
 
     return match_dict
 
 
 if __name__ == '__main__':
-    path = 'test/test.docx'
+    path = 'test\\test.docx'
 
     result_text = get_text(path)
     print(result_text)

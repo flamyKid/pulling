@@ -84,7 +84,7 @@ def write_data(path, data_dict, mode='w'):
     with open(path, mode) as file:
         json.dump(data_dict, file)
 
-        print('Writing complete')
+        print('Writing complete.')
 
         file.close()
 
@@ -140,7 +140,7 @@ if __name__ == '__main__':
         'president': {'name': 'Zaphod Beeblebrox', 'species': 'Betelgeusian', 'list': 5}
             }
 
-    path = 'test/test.json'
+    path = 'test\\test.json'
 
     write_data(path, data)
 

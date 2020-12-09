@@ -41,13 +41,13 @@ def find_text(path, pattern_list):
         for pattern in pattern_list:
             match = re.search(pattern.lower(), string.lower())
             if match:
-                match_dict[string] = pattern
+                match_dict[pattern] = string
 
     return match_dict
 
 
 if __name__ == '__main__':
-    path = 'test/test.pdf'
+    path = 'test\\test.pdf'
 
     result_text = get_text(path)
     print(result_text)

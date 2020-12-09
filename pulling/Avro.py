@@ -42,7 +42,7 @@ def write_data(path, schema, data_list, mode='wb'):
     with open(path, mode) as file:
         fastavro.writer(file, schema, data_list)
 
-        print('Writing complete')
+        print('Writing complete.')
 
         file.close()
 
@@ -93,17 +93,17 @@ if __name__ == '__main__':
         {'station': '012650-99999', 'temp': 111, 'time': 1433275478},
     ]
 
-    path = 'test/test.avro'
+    path = 'test\\test.avro'
 
     write_data(path, schema, records)
 
     print('__________')
-    found_data = find_data(path, schema, ['temp'])
+    found_data = find_data(path, schema, ['011990-99999'])
     for k, v in found_data.items():
         print(f'{k}: {v}')
     print('__________')
 
-    new_schema = replace_data(path, schema, path, {'011990-99999': 'Dore', 'temp': 'ityas'})
+    new_schema = replace_data(path, schema, path, {'011990-99999': '..numbers..', 'temp': 'key'})
     print(new_schema)
 
     result_data = get_data(path, schema)
