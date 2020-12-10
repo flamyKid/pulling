@@ -115,9 +115,7 @@ def replace_data(path, new_path, replacement_dict, mode='w'):
 
 if __name__ == '__main__':
     data = {
-        'int': {'list': 5, 'fl': 4, 'ok!': 555},
-        'list': [1, 2, 3,
-                 {'str': 'ok!', 'list': [1, 2]}],
+        'list': [1, 2, 3, 4, 5],
         'president': {'name': 'Zaphod Beeblebrox', 'species': 'Betelgeusian', 'list': 5}
             }
 
@@ -126,12 +124,12 @@ if __name__ == '__main__':
     write_data(path, data)
 
     print('__________')
-    found_data = find_data(path, ['president', 'ok!', 'list', 'Zaphod Beeblebrox'])
+    found_data = find_data(path, ['list', 'Zaphod Beeblebrox'])
     for k, v in found_data.items():
         print(f'{k}: {v}')
     print('__________')
 
-    replace_data(path, path, {'int': 'float', 'ok!': 'okay', 2: '2', 'list': 'List'})
+    replace_data(path, path, {2: '2', 'list': 'List'})
 
     result_data = get_data(path)
     print(result_data)

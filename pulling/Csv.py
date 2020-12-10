@@ -64,7 +64,7 @@ def replace_data(path, new_path, replacement_dict):
 
 
 if __name__ == '__main__':
-    data = [['Имя', 'Возраст'], ['ItYaS', '16'], ['dore', '13'], ['ityas', '17']]
+    data = [['Имя', 'Возраст'], ['ItYaS', '16'], ['dore', '13']]
 
     path = 'test\\test.csv'
 

@@ -62,5 +62,5 @@ if __name__ == '__main__':
     result_text = get_text(path)
     print(result_text)
 
-    found_text = find_text(path, ['Файл'])
+    found_text = find_text(path, ['ItYaS'])
     print(found_text)

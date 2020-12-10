@@ -62,7 +62,7 @@ def replace_text(path, new_path, replacement_dict, coding='utf-8', new_coding='u
     text_list = get_text(path, coding)
 
     for string in text_list:
-        line = string.rsplit()
+        line = string.rsplit()  # разбиение строки по пробелам
         for word in line:
             for old_value, new_value in replacement_dict.items():
                 if word == old_value:
@@ -76,7 +76,7 @@ def replace_text(path, new_path, replacement_dict, coding='utf-8', new_coding='u
             all_text += elem
 
         edit_line = all_text.strip()  # удаление пробелов в начале и конце предложения
-        edit_line += '. '  # добавление точки в конец предложения
+        edit_line += '.'  # добавление точки в конец предложения
 
         index = text_list.index(string)
         text_list[index] = edit_line  # изменение строки на редактированную строку
@@ -85,21 +85,16 @@ def replace_text(path, new_path, replacement_dict, coding='utf-8', new_coding='u
 
 
 if __name__ == '__main__':
-    text = ['Файл (англ', 'file) — именованная область данных на носителе информации. Работа с файлами реализуется средствами операционных систем',
-            'Многие операционные системы приравнивают к файлам и обрабатывают сходным образом и другие ресурсы:\n',
-            '\n', 'области данных (необязательно на диске);\n',
-            'устройства — как физические, например, порты или принтеры, так и виртуальные;\n',
-            'потоки данных (именованный канал);\n', 'сетевые ресурсы, сокеты;\n',
-            'прочие объекты операционной системы.']
+    text = ['Hello World.', 'It is ItYaS!']
 
     path = 'test\\test.rtf'
 
     write_text(path, text)
 
-    found_text = find_text(path, ['Файл'])
+    found_text = find_text(path, ['ItYaS'])
     print(found_text)
 
-    replace_text(path, path, {'Файл': 'File'})
+    replace_text(path, path, {'World': 'World!'})
 
     result_text = get_text(path)
     print(result_text)
