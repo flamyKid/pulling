@@ -21,7 +21,7 @@ def get_text(path, coding='utf-8'):
                         text_list.append(line)
                 else:  # соединение одной буквы
                     text_list[-1] += lines[0]
-            except:
+            except IndexError:
                 del lines
 
     return text_list
@@ -38,7 +38,10 @@ def find_text(path, pattern_list, coding='utf-8'):
         for pattern in pattern_list:
             match = re.search(pattern.lower(), string.lower())
             if match:
-                match_dict[pattern] = string
+                try:  # если совпадений на этот шаблон есть
+                    match_dict[pattern].append(string)
+                except KeyError:  # если совпадений на этот шаблон нет
+                    match_dict[pattern] = [string]
 
     return match_dict
 
@@ -93,7 +96,7 @@ if __name__ == '__main__':
 
     write_text(path, text)
 
-    found_text = find_text(path, ['file'])
+    found_text = find_text(path, ['Файл'])
     print(found_text)
 
     replace_text(path, path, {'Файл': 'File'})

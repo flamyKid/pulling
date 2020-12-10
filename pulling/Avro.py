@@ -28,11 +28,17 @@ def find_data(path, schema, pattern_list):
                     try:  # если цифр не будет
                         match = re.search(pattern.lower(), elem.lower())
                         if match:
-                            match_dict[pattern] = value_dict
+                            try:  # если совпадений на этот шаблон есть
+                                match_dict[pattern].append(value_dict)
+                            except KeyError:  # если совпадений на этот шаблон нет
+                                match_dict[pattern] = [value_dict]
                     except:  # если попадется цифра
                         match = re.search(pattern.lower(), str(elem))
                         if match:
-                            match_dict[pattern] = value_dict
+                            try:  # если совпадений на этот шаблон есть
+                                match_dict[pattern].append(value_dict)
+                            except KeyError:  # если совпадений на этот шаблон нет
+                                match_dict[pattern] = [value_dict]
 
     return match_dict
 

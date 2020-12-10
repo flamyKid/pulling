@@ -31,7 +31,8 @@ def get_text(path):
     for line in strings:
         lines = line.split('\n')  # разбиение по абзацам
         for string in lines:
-            text_list.append(string)
+            if string:
+                text_list.append(string)
 
     return text_list
 
@@ -47,7 +48,10 @@ def find_text(path, pattern_list):
         for pattern in pattern_list:
             match = re.search(pattern.lower(), string.lower())
             if match:
-                match_dict[pattern] = string
+                try:  # если совпадений на этот шаблон есть
+                    match_dict[pattern].append(string)
+                except KeyError:  # если совпадений на этот шаблон нет
+                    match_dict[pattern] = [string]
 
     return match_dict
 
@@ -58,5 +62,5 @@ if __name__ == '__main__':
     result_text = get_text(path)
     print(result_text)
 
-    found_text = find_text(path, ['file'])
+    found_text = find_text(path, ['Файл'])
     print(found_text)

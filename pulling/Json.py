@@ -29,34 +29,15 @@ def find_data(path, pattern_list):
     # добавление элементов в словарь
     def add_to_dict(elem, parent):
 
-        # добавление нового словаря в список словарей
-        def add_dict_to_list(List, Dict):
-            new_elements_list = []
-
-            for dicts in List:
-                new_elements_list.append(dicts)
-
-            new_elements_list.append(Dict)
-
-            return new_elements_list
-
         for pattern in pattern_list:
             match = re.search(pattern.lower(), str(elem).lower())
             if match:
                 if parent:
                     # блок try на случай, если элемента с таким именем не было еще
-                    try:  # если есть несколько ключей с одним именем
-                        dict_elem = match_dict[elem]
-                        if dict_elem:
-                            # проверка, чтобы словарь с несколькими элементами не прошел
-                            if isinstance(dict_elem, list) and len(dict_elem) >= 2:
-                                # только для списка со словарями совпадений
-                                elements_list = add_dict_to_list(dict_elem, parent)
-                            else:  # если такое имя было, но один раз
-                                elements_list = [dict_elem, parent]  # добавление нового словаря к первому
-                            match_dict[elem] = elements_list
-                    except KeyError:  # если такого же имени у ключа не было
-                        match_dict[elem] = parent
+                    try:  # если совпадений на этот шаблон есть
+                        match_dict[pattern].append(parent)
+                    except KeyError:  # если совпадений на этот шаблон нет
+                        match_dict[pattern] = [parent]
                 else:  # если родитель - самый первый словарь
                     match_dict[f'child of this element({elem})'] = value
 

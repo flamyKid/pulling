@@ -41,7 +41,10 @@ def find_text(path, pattern_list):
         for pattern in pattern_list:
             match = re.search(pattern.lower(), string.lower())
             if match:
-                match_dict[pattern] = string
+                try:  # если совпадений на этот шаблон есть
+                    match_dict[pattern].append(string)
+                except KeyError:  # если совпадений на этот шаблон нет
+                    match_dict[pattern] = [string]
 
     return match_dict
 

@@ -5,10 +5,13 @@ def get_text(path, coding='utf-8'):
     # возвращаемый список с текстом
     text_list = list()
 
-    for strings in open(path, encoding=coding):  # это абзацы
-        lines = strings.split('. ')
+    for all_strings in open(path, encoding=coding):
+        lines = all_strings.split('. ')
         for line in lines:  # это сами предложения
-            text_list.append(line)
+            strings = line.split('\n')  # разбиение по абзацам
+            for string in strings:
+                if string:
+                    text_list.append(string)
 
     return text_list
 
@@ -24,7 +27,10 @@ def find_text(path, pattern_list, coding='utf-8'):
         for pattern in pattern_list:
             match = re.search(pattern.lower(), string.lower())
             if match:
-                match_dict[pattern] = string
+                try:  # если совпадений на этот шаблон есть
+                    match_dict[pattern].append(string)
+                except KeyError:  # если совпадений на этот шаблон нет
+                    match_dict[pattern] = [string]
 
     return match_dict
 
@@ -73,13 +79,13 @@ if __name__ == '__main__':
             '\n', 'области данных (необязательно на диске);\n',
             'устройства — как физические, например, порты или принтеры, так и виртуальные;\n',
             'потоки данных (именованный канал);\n', 'сетевые ресурсы, сокеты;\n',
-            'прочие объекты операционной системы.']
+            'прочие объекты операционной системы.\n']
 
     path = 'test\\test.txt'
 
     write_text(path, text)
 
-    found_text = find_text(path, ['file'])
+    found_text = find_text(path, ['Файл'])
     print(found_text)
 
     replace_text(path, path, {'Файл': 'File'})

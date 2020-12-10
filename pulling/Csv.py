@@ -30,7 +30,10 @@ def find_data(path, pattern_list):
             for pattern in pattern_list:
                 match = re.search(pattern.lower(), column.lower())
                 if match:
-                    match_dict[pattern] = row
+                    try:  # если совпадений на этот шаблон есть
+                        match_dict[pattern].append(row)
+                    except KeyError:  # если совпадений на этот шаблон нет
+                        match_dict[pattern] = [row]
 
     return match_dict
 
@@ -61,7 +64,7 @@ def replace_data(path, new_path, replacement_dict):
 
 
 if __name__ == '__main__':
-    data = [['Имя', 'Возраст'], ['ItYaS', '16'], ['dore', '13']]
+    data = [['Имя', 'Возраст'], ['ItYaS', '16'], ['dore', '13'], ['ityas', '17']]
 
     path = 'test\\test.csv'
 
