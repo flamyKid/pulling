@@ -111,25 +111,3 @@ def replace_data(path, new_path, replacement_dict, mode='w'):
     check_type(data_dict)
 
     write_data(new_path, data_dict, mode)
-
-
-if __name__ == '__main__':
-    data = {
-        'list': [1, 2, 3, 4, 5],
-        'president': {'name': 'Zaphod Beeblebrox', 'species': 'Betelgeusian', 'list': 5}
-            }
-
-    path = 'test\\test.json'
-
-    write_data(path, data)
-
-    print('__________')
-    found_data = find_data(path, ['list', 'Zaphod Beeblebrox'])
-    for k, v in found_data.items():
-        print(f'{k}: {v}')
-    print('__________')
-
-    replace_data(path, path, {2: '2', 'list': 'List'})
-
-    result_data = get_data(path)
-    print(result_data)
