@@ -61,19 +61,3 @@ def replace_data(path, new_path, replacement_dict):
                     row[index] = new_value
 
     write_data(new_path, data_list, 'w')
-
-
-if __name__ == '__main__':
-    data = [['Имя', 'Возраст'], ['ItYaS', '16'], ['dore', '13']]
-
-    path = 'test\\test.csv'
-
-    write_data(path, data)
-
-    found_data = find_data(path, ['ityas'])
-    print(found_data)
-
-    replace_data(path, path, {'dore': 'Dore', '16': '17'})
-
-    result_data = get_data(path)
-    print(result_data)
