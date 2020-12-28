@@ -54,13 +54,3 @@ def find_text(path, pattern_list):
                     match_dict[pattern] = [string]
 
     return match_dict
-
-
-if __name__ == '__main__':
-    path = 'test\\test.docx'
-
-    result_text = get_text(path)
-    print(result_text)
-
-    found_text = find_text(path, ['ItYaS'])
-    print(found_text)
