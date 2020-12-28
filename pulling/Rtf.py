@@ -82,19 +82,3 @@ def replace_text(path, new_path, replacement_dict, coding='utf-8', new_coding='u
         text_list[index] = edit_line  # изменение строки на редактированную строку
 
     write_text(new_path, text_list, 'w', new_coding)
-
-
-if __name__ == '__main__':
-    text = ['Hello World.', 'It is ItYaS!']
-
-    path = 'test\\test.rtf'
-
-    write_text(path, text)
-
-    found_text = find_text(path, ['ItYaS'])
-    print(found_text)
-
-    replace_text(path, path, {'World': 'World!'})
-
-    result_text = get_text(path)
-    print(result_text)
