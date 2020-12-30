@@ -80,7 +80,7 @@ def replace_data(path, new_path, replacement_dict, mode='w'):
                     check_type(value)
                 if isinstance(value, dict):
                     check_type(value)
-                else:  # если без вложенностей
+                else:  # если без вложенности
                     if value == old_value:
                         Dict[key] = new_value  # замена значения на новое
                     elif key == old_value:
@@ -93,7 +93,7 @@ def replace_data(path, new_path, replacement_dict, mode='w'):
                 check_type(elem)
             elif isinstance(elem, list):
                 check_type(elem)
-            else:  # если без вложенностей
+            else:  # если без вложенности
                 for old_value, new_value in replacement_dict.items():
                     if elem == old_value:
                         index = List.index(elem)

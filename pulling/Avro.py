@@ -32,7 +32,7 @@ def find_data(path, schema, pattern_list):
                                 match_dict[pattern].append(value_dict)
                             except KeyError:  # если совпадений на этот шаблон нет
                                 match_dict[pattern] = [value_dict]
-                    except:  # если попадется цифра
+                    except AttributeError:  # если попадется цифра
                         match = re.search(pattern.lower(), str(elem))
                         if match:
                             try:  # если совпадений на этот шаблон есть
@@ -59,8 +59,8 @@ def replace_data(path, schema, new_path, replacement_dict):
     # если не изменить схему, то поменять имя ключа в файле нельзя будет
     def replace_schema(old_key, new_key):
         for key_dict in schema['fields']:
-            for key, val in key_dict.items():
-                if val == old_key:
+            for key, value in key_dict.items():
+                if value == old_key:
                     key_dict[key] = new_key
 
     data_list = get_data(path, schema)  # данные полученные из файла
