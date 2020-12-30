@@ -49,20 +49,20 @@
 > 
 > path = 'path\\file.txt'
 > 
-> text = [ 'Hello World!', 'It is the ItYaS!' ]
+> text = [ 'Hello World.', 'It is the ItYaS!' ]
 
 > txt.write_text(path, text)
 >> Writing complete.
 
-> found_text = txt.find_text(path, ['World'])
+> found_text = txt.find_text(path, ['ItYaS'])
 > 
 > print(found_text)
->> { 'World': 'Hello World!' }
+>> { 'ItYaS': [ 'It is ItYaS!' ] }
 
-> txt.replace_text(path, path, {'World!': 'World.'})
+> txt.replace_text(path, path, {'World.': 'World!'})
 >> Writing complete.
 
 > result_text = txt.get_text(path)
 > 
 > print(result_text)
->> [ 'Hello World.', 'It is the ItYaS!' ]
+>> [ 'Hello World!', 'It is the ItYaS!' ]

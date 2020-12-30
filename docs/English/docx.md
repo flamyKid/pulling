@@ -18,14 +18,14 @@ Call the functions of this format:
 ## Code sample
 > import pulling.Docx as docx
 > 
-> path = 'path\\file.docx'.
+> path = 'path\\file.docx'
 
 > result_text = docx.get_text(path)
 > 
 > print(result_text)
->> [ 'Hello World!', 'It is the ItYaS!' ]
+>> [ 'Hello World', 'It is the ItYaS!' ]
 
 > found_text = docx.find_text(path, ['ItYaS'])
 > 
 > print(found_text)
->> { 'ItYaS': 'It is the ItYaS! }
+>> { 'ItYaS': [ 'It is the ItYaS!' ] }

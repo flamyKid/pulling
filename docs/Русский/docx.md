@@ -16,16 +16,16 @@
 
  - *pattern_list* - список с шаблонами, где каждый шаблон является отдельным элементом списка.
 ## Пример кода
->  import pulling.Docx as docx
+> import pulling.Docx as docx
 > 
 > path = 'path\\file.docx'
 
 > result_text = docx.get_text(path)
 > 
 > print(result_text)
->> [ 'Hello World!', 'It is the ItYaS!' ]
+>> [ 'Hello World', 'It is the ItYaS!' ]
 
 > found_text = docx.find_text(path, ['ItYaS'])
 > 
 > print(found_text)
->> { 'ItYaS': 'It is the ItYaS!' }
+>> { 'ItYaS': [ 'It is the ItYaS!' ] }

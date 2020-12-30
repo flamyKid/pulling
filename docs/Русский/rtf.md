@@ -48,20 +48,20 @@
 > 
 > path = 'path\\file.rtf'
 > 
-> text = [ 'Hello World!', 'It is the ItYaS!' ]
+> text = [ 'Hello World.', 'It is the ItYaS!' ]
 
 > rtf.write_text(path, text)
 >> Writing complete.
 
-> found_text = rtf.find_text(path, ['World'])
+> found_text = rtf.find_text(path, ['ItYaS'])
 > 
 > print(found_text)
->> { 'World': 'Hello World!' }
+>> { 'ItYaS': [ 'It is ItYaS!' ] }
 
-> rtf.replace_text(path, path, {'World!': 'World.'})
+> rtf.replace_text(path, path, {'World': 'World!'})
 >> Writing complete.
 
 > result_text = rtf.get_text(path)
 > 
 > print(result_text)
->> [ 'Hello World.', 'It is the ItYaS!' ]
+>> [ 'Hello World!', 'It is the ItYaS!' ]
