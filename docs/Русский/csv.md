@@ -39,27 +39,21 @@
 >
 > path = 'path\\file.csv'
 > 
-> data = [ ['Имя', 'Возраст'] , ['Серафим', '16'] , ['Николай', '13'] ] 
+> data = [ [ 'Name', 'Age' ], [ 'ItYaS', '16' ], [ 'Dore', '13' ] ] 
 
 > csv.write_data(path, data)
 >> Writing complete.
 
-> found_data = csv.find_data(path, ['16', 'Николай'])
+> found_data = csv.find_data(path, [ 'ItYaS' ])
 > 
 > print(found_data)
->> {
->>
->> '16': ['Серафим', '16'], 
->>
->> 'Николай': ['Николай', '13'] 
->>
->> }
+>> { 'ItYaS': [ [ 'ItYaS', '16' ] ] }
 
 
-> csv.replace_data(path, path, {'Николай': 'Коля', '16': '17'})
+> csv.replace_data(path, path, { '16': '17' })
 >> Writing complete.
 
 > result_data = csv.get_data(path)
 > 
 > print(result_data)
->> [ ['Имя', 'Возраст'], ['Серафим', '17'], ['Коля', '13'] ]
+>> [ [ 'Name', 'Age' ], [ 'ItYaS', '17' ], [ 'Dore', '13' ] ]

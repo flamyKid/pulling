@@ -54,12 +54,12 @@ Call the functions of this format:
 > txt.write_text(path, text)
 >> Writing complete.
 
-> found_text = txt.find_text(path, ['ItYaS'])
+> found_text = txt.find_text(path, [ 'ItYaS' ])
 > 
 > print(found_text)
 >> { 'ItYaS': [ 'It is ItYaS!' ] }
 
-> txt.replace_text(path, path, {'World.': 'World!'})
+> txt.replace_text(path, path, { 'World': 'World!' })
 >> Writing complete.
 
 > result_text = txt.get_text(path)

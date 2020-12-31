@@ -37,29 +37,23 @@ Call the functions of this format:
 ## Code sample
 > import pulling.Avro as avro
 >
-> path = 'path\\file.csv'.
+> path = 'path\\file.csv'
 > 
-> data = [ ['Name', 'Age'] , ['Seraphim', '16'] , ['Nikolas', '13'] ]. 
+> data = [ [ 'Name', 'Age' ], [ 'ItYaS', '16' ], [ 'Dore', '13' ] ] 
 
 > csv.write_data(path, data)
 >> Writing complete.
 
-> found_data = csv.find_data(path, ['16', 'Nikolas']).
+> found_data = csv.find_data(path, [ 'ItYaS' ])
 > 
 > print(found_data)
->> {
->>
->> '16': ['Seraphim', '16'], 
->>
->> 'Nikolai': ['Nicholas', '13'] 
->>
->> }
+>> { 'ItYaS': [ [ 'ItYaS', '16' ] ] }
 
 
-> csv.replace_data(path, path, {'Nikolas': 'Kolya', '16': '17' }).
+> csv.replace_data(path, path, { '16': '17' })
 >> Writing complete.
 
 > result_data = csv.get_data(path)
 > 
 > print(result_data)
->> [ ['Name', 'Age'], ['Seraphim', '17'], ['Kolya', '13'] ]
+>> [ [ 'Name', 'Age' ], [ 'ItYaS', '17' ], [ 'Dore', '13' ] ]

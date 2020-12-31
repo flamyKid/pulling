@@ -25,7 +25,7 @@ Call the functions of this format:
 > print(result_text)
 >> [ 'Hello World', 'It is the ItYaS!' ]
 
-> found_text = docx.find_text(path, ['ItYaS'])
+> found_text = docx.find_text(path, [ 'ItYaS' ])
 > 
 > print(found_text)
 >> { 'ItYaS': [ 'It is the ItYaS!' ] }

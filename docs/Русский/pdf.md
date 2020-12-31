@@ -25,7 +25,7 @@
 > print(result_text)
 >> [ 'Hello World', 'It is the ItYaS' ]
 
-> found_text = pdf.find_text(path, ['ItYaS'])
+> found_text = pdf.find_text(path, [ 'ItYaS' ])
 > 
 > print(found_text)
 >> { 'ItYaS': [ 'It is the ItYaS' ] }

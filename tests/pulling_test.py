@@ -25,14 +25,14 @@ records = [
     {'station': '011990-99999', 'temp': 0, 'time': 1433269388},
     {'station': '011990-99999', 'temp': 22, 'time': 1433270389},
     {'station': '011990-99999', 'temp': -11, 'time': 1433273379},
-    {'station': '012650-99999', 'temp': 111, 'time': 1433275478},
+    {'station': '012650-99999', 'temp': 111, 'time': 1433275478}
 ]
 
 path = 'file.avro'
 
 avro.write_data(path, schema, records)
 
-found_data = avro.find_data(path, schema, ['011990-99999'])
+found_data = avro.find_data(path, schema, ['-11'])
 print(f'found: {found_data}')
 
 new_schema = avro.replace_data(path, schema, path, {'011990-99999': '..numbers..', 'temp': 'key'})
@@ -43,16 +43,16 @@ print(f'result: {result_data}\n')
 
 print('____________________CSV____________________\n')
 
-data = [['Имя', 'Возраст'], ['ItYaS', '16'], ['dore', '13']]
+data = [['Name', 'Age'], ['ItYaS', '16'], ['Dore', '13']]
 
 path = 'file.csv'
 
 csv.write_data(path, data)
 
-found_data = csv.find_data(path, ['ityas'])
+found_data = csv.find_data(path, ['ItYaS'])
 print(f'found: {found_data}')
 
-csv.replace_data(path, path, {'dore': 'Dore', '16': '17'})
+csv.replace_data(path, path, {'16': '17'})
 
 result_data = csv.get_data(path)
 print(f'result: {result_data}\n')
@@ -93,7 +93,7 @@ print('____________________JSON____________________\n')
 
 data = {
     'list': [1, 2, 3, 4, 5],
-    'president': {'name': 'Zaphod Beeblebrox', 'species': 'Betelgeusian', 'list': 5}
+    'president': {'name': 'Zaphod Beeblebrox', 'species': 'Betelgeusian', 'just_number': 2}
 }
 
 path = 'file.json'

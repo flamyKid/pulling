@@ -53,12 +53,12 @@
 > rtf.write_text(path, text)
 >> Writing complete.
 
-> found_text = rtf.find_text(path, ['ItYaS'])
+> found_text = rtf.find_text(path, [ 'ItYaS' ])
 > 
 > print(found_text)
 >> { 'ItYaS': [ 'It is ItYaS!' ] }
 
-> rtf.replace_text(path, path, {'World': 'World!'})
+> rtf.replace_text(path, path, { 'World': 'World!' })
 >> Writing complete.
 
 > result_text = rtf.get_text(path)

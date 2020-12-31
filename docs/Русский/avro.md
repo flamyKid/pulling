@@ -62,25 +62,25 @@
 >
 > records = [
 > 
->       { 'station': '1', 'time': 1433269388, 'temp': 0 }, 
+>       { 'station': '011990-99999', 'time': 1433269388, 'temp': 0 }, 
 >
->       { 'station': '2', 'time': 1433270389, 'temp': 22 }, 
+>       { 'station': '011990-99999', 'time': 1433270389, 'temp': 22 }, 
 >
->       { 'station': '3', 'time': 1433273379, 'temp': -11 }, 
+>       { 'station': '011990-99999', 'time': 1433273379, 'temp': -11 }, 
 >
->       { 'station': '4', 'time': 1433275478, 'temp': 111 }
+>       { 'station': '011990-99999', 'time': 1433275478, 'temp': 111 }
 >
 > ]
 
 > json.write_data(path, schema, records)
 >> Writing complete.
 
-> found_data = json.find_data(path, schema, ['3'])
+> found_data = json.find_data(path, schema, [ '011990-99999' ])
 > 
 > print(found_data)
->> { 3: { 'station': '3', 'time': 1433273379, 'temp': -11 } }
+>> { '-11': { 'station': '011990-99999', 'time': 1433273379, 'temp': -11 } }
 
-> new_schema = json.replace_data(path, schema, path, {'1': 'one', 'temp': 'key'})
+> new_schema = json.replace_data(path, schema, path, { '011990-99999': '..numbers..', 'temp': 'key' })
 > 
 > print(new_schema)
 >> Writing complete.
@@ -107,12 +107,12 @@
 > print(result_data)
 >> [
 >> 
->> { 'station': 'one', 'time': 1433269388, 'key': 0 }, 
+>> { 'station': '..numbers..', 'time': 1433269388, 'key': 0 }, 
 >>
->> { 'station': '2', 'time': 1433270389, 'key': 22 }, 
+>> { 'station': '..numbers..', 'time': 1433270389, 'key': 22 }, 
 >>
->> { 'station': '3', 'time': 1433273379, 'key': -11 }, 
+>> { 'station': '..numbers..', 'time': 1433273379, 'key': -11 }, 
 >>
->> { 'station': '4', 'time': 1433275478, 'key': 111 }
+>> { 'station': '..numbers..', 'time': 1433275478, 'key': 111 }
 >>
 >> ]

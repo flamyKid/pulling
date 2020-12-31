@@ -48,18 +48,18 @@ Call the functions of this format:
 > json.write_data(path, data)
 >> Writing complete.
 
-> found_data = json.find_data(path, ['list', 'Zaphod Beeblebrox'])
+> found_data = json.find_data(path, [ 'list', 'Zaphod Beeblebrox' ])
 > 
 > print(found_data)
 >> { 
 >>
 >> 'child of this element(list)': [ 1, 2, 3, 4, 5 ], 
 >>
->> 'Zaphod Beeblebrox': { 'name': 'Zaphod Beeblebrox', 'species': 'Betelgeusian', 'just_number': 2 } 
+>> 'Zaphod Beeblebrox': [ { 'name': 'Zaphod Beeblebrox', 'species': 'Betelgeusian', 'just_number': 2 } ] 
 >>
 >> }
 
-> json.replace_data(path, path, { 2: '2', 'list': 'List'})
+> json.replace_data(path, path, { 2: '2', 'list': 'List' })
 >> Writing complete.
 
 > result_data = json.get_data(path)
