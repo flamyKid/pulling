@@ -18,11 +18,11 @@ body {
 	border-radius: 3px;
 	box-shadow: 2px 0 7px;
 	height: auto;
-    width: 70%;
-    margin: 6px auto 10px auto;
-    padding: 10px 25px 20px;
-    position: relative;
-    align-content: center;
+    	width: 70%;
+    	margin: 6px auto 10px auto;
+    	padding: 10px 25px 20px;
+    	position: relative;
+    	align-content: center;
 }
 .format {
 	margin-left: 5%;
