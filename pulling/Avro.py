@@ -25,20 +25,12 @@ def find_data(path, schema, pattern_list):
         for pattern in pattern_list:
             for key, value in value_dict.items():
                 for elem in (key, value):
-                    try:  # если цифр не будет
-                        match = re.search(pattern.lower(), elem.lower())
-                        if match:
-                            try:  # если совпадений на этот шаблон есть
-                                match_dict[pattern].append(value_dict)
-                            except KeyError:  # если совпадений на этот шаблон нет
-                                match_dict[pattern] = [value_dict]
-                    except AttributeError:  # если попадется цифра
-                        match = re.search(pattern.lower(), str(elem))
-                        if match:
-                            try:  # если совпадений на этот шаблон есть
-                                match_dict[pattern].append(value_dict)
-                            except KeyError:  # если совпадений на этот шаблон нет
-                                match_dict[pattern] = [value_dict]
+                    match = re.search(pattern.lower(), str(elem).lower())
+                    if match:
+                        try:  # если совпадений на этот шаблон есть
+                            match_dict[pattern].append(value_dict)
+                        except KeyError:  # если совпадений на этот шаблон нет
+                            match_dict[pattern] = [value_dict]
 
     return match_dict
 
