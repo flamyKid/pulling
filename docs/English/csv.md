@@ -35,7 +35,7 @@ Call the functions of this format:
 
  - *replacement_dict* - dictionary with data, where dictionary keys are data to be replaced, and dictionary element value is data to be replaced.
 ## Code sample
-> import pulling.Avro as avro
+> import pulling.Csv as csv
 >
 > path = 'path\\file.csv'
 > 

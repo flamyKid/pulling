@@ -35,7 +35,7 @@
 
  - *replacement_dict* - словарь с данными, где ключи словаря - это данные, которые надо заменить, а значение элементов словаря - данные на которые надо заменить.
 ## Пример кода
-> import pulling.Avro as avro
+> import pulling.Csv as csv
 >
 > path = 'path\\file.csv'
 > 
