@@ -1,7 +1,14 @@
 Pulling
 =============
 Pulling is an open source python repository for working with files of different extensions. Documentation in English can be found here - https://github.com/ItYaS/pulling/wiki.
-The repository now supports .txt .rtf .pdf .docx .csv .avro .json formats.
+The repository now supports formats:
+ - .txt
+ - .rtf
+ - .pdf
+ - .docx
+ - .csv
+ - .avro
+ - .json formats.
 
 Future
 ======================
@@ -15,3 +22,4 @@ Version 1.4
 - Fixed bugs and architecture
 - Removed unnecessary code
 - Improved readability and usability
+- Corrected errors in the documentation
