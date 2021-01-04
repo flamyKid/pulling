@@ -1,129 +1,152 @@
 import pulling.Avro as avro
+import pulling.Json as json
 import pulling.Csv as csv
+import pulling.Pdf as pdf
+import pulling.Docx as docx
 import pulling.Rtf as rtf
 import pulling.Txt as txt
-import pulling.Json as json
-import pulling.Docx as docx
-import pulling.Pdf as pdf
 
 
-print('____________________AVRO____________________\n')
+def test_avro():
+    schema = {
+        'doc': 'A weather reading.',
+        'name': 'Weather',
+        'namespace': 'test',
+        'type': 'record',
+        'fields': [
+            {'name': 'station', 'type': 'string'},
+            {'name': 'time', 'type': 'long'},
+            {'name': 'temp', 'type': 'int'},
+        ],
+    }
+    records = [
+        {'station': '011990-99999', 'temp': 0, 'time': 1433269388},
+        {'station': '011990-99999', 'temp': 22, 'time': 1433270389},
+        {'station': '011990-99999', 'temp': -11, 'time': 1433273379},
+        {'station': '012650-99999', 'temp': 111, 'time': 1433275478}
+    ]
 
-schema = {
-    'doc': 'A weather reading.',
-    'name': 'Weather',
-    'namespace': 'test',
-    'type': 'record',
-    'fields': [
-        {'name': 'station', 'type': 'string'},
-        {'name': 'time', 'type': 'long'},
-        {'name': 'temp', 'type': 'int'},
-    ],
-}
+    path = 'file.avro'
 
-records = [
-    {'station': '011990-99999', 'temp': 0, 'time': 1433269388},
-    {'station': '011990-99999', 'temp': 22, 'time': 1433270389},
-    {'station': '011990-99999', 'temp': -11, 'time': 1433273379},
-    {'station': '012650-99999', 'temp': 111, 'time': 1433275478}
-]
+    avro.write_data(path, schema, records)
 
-path = 'file.avro'
+    found_data = avro.find_data(path, schema, ['-11'])
+    print(f'found: {found_data}')
 
-avro.write_data(path, schema, records)
+    new_schema = avro.replace_data(path, schema, path, {'011990-99999': '..numbers..', 'temp': 'key'})
+    print(new_schema)
 
-found_data = avro.find_data(path, schema, ['-11'])
-print(f'found: {found_data}')
+    result_data = avro.get_data(path, schema)
+    print(f'result: {result_data}\n')
 
-new_schema = avro.replace_data(path, schema, path, {'011990-99999': '..numbers..', 'temp': 'key'})
-print(new_schema)
 
-result_data = avro.get_data(path, schema)
-print(f'result: {result_data}\n')
+def test_json():
+    data = {
+        'list': [1, 2, 3, 4, 5],
+        'president': {'name': 'Zaphod Beeblebrox', 'species': 'Betelgeusian', 'just_number': 2}
+    }
+    path = 'file.json'
 
-print('____________________CSV____________________\n')
+    json.write_data(path, data)
 
-data = [['Name', 'Age'], ['ItYaS', '16'], ['Dore', '13']]
+    found_data = json.find_data(path, ['list', 'Zaphod Beeblebrox'])
+    print(f'found: {found_data}')
 
-path = 'file.csv'
+    json.replace_data(path, path, {2: '2', 'list': 'List'})
 
-csv.write_data(path, data)
+    result_data = json.get_data(path)
+    print(f'result: {result_data}\n')
 
-found_data = csv.find_data(path, ['ItYaS'])
-print(f'found: {found_data}')
 
-csv.replace_data(path, path, {'16': '17'})
+def test_csv():
+    data = [['Name', 'Age'], ['ItYaS', '16'], ['Dore', '13']]
+    path = 'file.csv'
 
-result_data = csv.get_data(path)
-print(f'result: {result_data}\n')
+    csv.write_data(path, data)
 
-print('____________________RTF____________________\n')
+    found_data = csv.find_data(path, ['ItYaS'])
+    print(f'found: {found_data}')
 
-text = ['Hello World.', 'It is ItYaS!']
+    csv.replace_data(path, path, {'16': '17'})
 
-path = 'file.rtf'
+    result_data = csv.get_data(path)
+    print(f'result: {result_data}\n')
 
-rtf.write_text(path, text)
 
-found_text = rtf.find_text(path, ['ItYaS'])
-print(f'found: {found_text}')
+def test_pdf():
+    path = 'file.pdf'
 
-rtf.replace_text(path, path, {'World': 'World!'})
+    result_text = pdf.get_text(path)
+    print(f'result: {result_text}')
 
-result_text = rtf.get_text(path)
-print(f'result: {result_text}\n')
+    found_text = pdf.find_text(path, ['ItYaS'])
+    print(f'found: {found_text}\n')
 
-print('____________________TXT____________________\n')
 
-text = ['Hello World.', 'It is ItYaS!']
+def test_docx():
+    path = 'file.docx'
 
-path = 'file.txt'
+    result_text = docx.get_text(path)
+    print(f'result: {result_text}')
 
-txt.write_text(path, text)
+    found_text = docx.find_text(path, ['ItYaS'])
+    print(f'found: {found_text}\n')
 
-found_text = txt.find_text(path, ['ItYaS'])
-print(f'found: {found_text}')
 
-txt.replace_text(path, path, {'World': 'World!'})
+def test_rtf():
+    text = ['Hello World.', 'It is ItYaS!']
+    path = 'file.rtf'
 
-result_text = txt.get_text(path)
-print(f'result: {result_text}\n')
+    rtf.write_text(path, text)
 
-print('____________________JSON____________________\n')
+    result_text = rtf.get_text(path)
+    print(result_text)
 
-data = {
-    'list': [1, 2, 3, 4, 5],
-    'president': {'name': 'Zaphod Beeblebrox', 'species': 'Betelgeusian', 'just_number': 2}
-}
+    found_text = rtf.find_text(path, ['ItYaS'])
+    print(f'found: {found_text}')
 
-path = 'file.json'
+    rtf.replace_text(path, path, {'World': 'World!'})
 
-json.write_data(path, data)
+    result_text = rtf.get_text(path)
+    print(f'result: {result_text}\n')
 
-found_data = json.find_data(path, ['list', 'Zaphod Beeblebrox'])
-print(f'found: {found_data}')
 
-json.replace_data(path, path, {2: '2', 'list': 'List'})
+def test_txt():
+    text = ['Hello World.', 'It is ItYaS!']
+    path = 'file.txt'
 
-result_data = json.get_data(path)
-print(f'result: {result_data}\n')
+    txt.write_text(path, text)
 
-print('____________________DOCX____________________\n')
+    result_text = txt.get_text(path)
+    print(result_text)
 
-path = 'file.docx'
+    found_text = txt.find_text(path, ['ItYaS'])
+    print(f'found: {found_text}')
 
-result_text = docx.get_text(path)
-print(f'result: {result_text}')
+    txt.replace_text(path, path, {'World': 'World!'})
 
-found_text = docx.find_text(path, ['ItYaS'])
-print(f'found: {found_text}\n')
+    result_text = txt.get_text(path)
+    print(f'result: {result_text}\n')
 
-print('____________________PDF____________________\n')
 
-path = 'file.pdf'
+if __name__ == '__main__':
+    print('____________________AVRO____________________\n')
+    test_avro()
 
-result_text = pdf.get_text(path)
-print(f'result: {result_text}')
+    print('____________________JSON____________________\n')
+    test_json()
 
-found_text = pdf.find_text(path, ['ItYaS'])
-print(f'found: {found_text}\n')
+    print('____________________CSV____________________\n')
+    test_csv()
+
+    print('____________________PDF____________________\n')
+    test_pdf()
+
+    print('____________________DOCX____________________\n')
+    test_docx()
+
+    print('____________________RTF____________________\n')
+    test_rtf()
+
+    print('____________________TXT____________________\n')
+    test_txt()
