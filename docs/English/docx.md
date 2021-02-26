@@ -15,17 +15,3 @@ Call the functions of this format:
  - *path* - is the path to the required file.
 
  - *pattern_list* - a list with templates, where each template is a separate list element.
-## Code sample
-> import pulling.Docx as docx
-> 
-> path = 'path\\file.docx'
-
-> result_text = docx.get_text(path)
-> 
-> print(result_text)
->> [ 'Hello World', 'It is the ItYaS!' ]
-
-> found_text = docx.find_text(path, [ 'ItYaS' ])
-> 
-> print(found_text)
->> { 'ItYaS': [ 'It is the ItYaS!' ] }

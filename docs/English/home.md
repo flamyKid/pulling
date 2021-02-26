@@ -7,10 +7,6 @@ After that, install the pulling package through the console.
 
 > **> pip install pulling**
 
-Further in the documentation there will be such windows:
-> Code will be here (input)
->> And here's the output (output)
-
 ## Future
 Such a repository can be extended for life. That's what I will do. 
 But the next version (where there will be working from other formats) will not be released soon. 

@@ -15,17 +15,3 @@
  - *path* - путь до нужного файла.
 
  - *pattern_list* - список с шаблонами, где каждый шаблон является отдельным элементом списка.
-## Пример кода
-> import pulling.Pdf as pdf
-> 
-> path = 'path\\file.pdf'
-
-> result_text = pdf.get_text(path)
-> 
-> print(result_text)
->> [ 'Hello World', 'It is the ItYaS' ]
-
-> found_text = pdf.find_text(path, [ 'ItYaS' ])
-> 
-> print(found_text)
->> { 'ItYaS': [ 'It is the ItYaS' ] }

@@ -15,17 +15,3 @@ Call the functions of this format:
  - *path* - is the path to the required file.
 
  - *pattern_list* - a list with templates, where each template is a separate list element.
-## Code sample
-> import pulling.Pdf as pdf
-> 
-> path = 'path\\file.pdf'
-
-> result_text = pdf.get_text(path)
-> 
-> print(result_text)
->> [ 'Hello World', 'It is the ItYaS' ]
-
-> found_text = pdf.find_text(path, [ 'ItYaS' ])
-> 
-> print(found_text)
->> { 'ItYaS': [ 'It is the ItYaS' ] }
