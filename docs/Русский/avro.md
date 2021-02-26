@@ -72,15 +72,15 @@
 >
 > ]
 
-> json.write_data(path, schema, records)
+> avro.write_data(path, schema, records)
 >> Writing complete.
 
-> found_data = json.find_data(path, schema, [ '011990-99999' ])
+> found_data = avro.find_data(path, schema, [ '011990-99999' ])
 > 
 > print(found_data)
 >> { '-11': { 'station': '011990-99999', 'time': 1433273379, 'temp': -11 } }
 
-> new_schema = json.replace_data(path, schema, path, { '011990-99999': '..numbers..', 'temp': 'key' })
+> new_schema = avro.replace_data(path, schema, path, { '011990-99999': '..numbers..', 'temp': 'key' })
 > 
 > print(new_schema)
 >> Writing complete.
@@ -103,7 +103,7 @@
 >> 
 >> }
 
-> result_data = json.get_data(path, schema)
+> result_data = avro.get_data(path, schema)
 > print(result_data)
 >> [
 >> 
