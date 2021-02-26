@@ -26,7 +26,7 @@ def test_avro():
         {'station': '012650-99999', 'temp': 111, 'time': 1433275478}
     ]
 
-    path = 'file.avro'
+    path = 'example.avro'
 
     avro.write_data(path, schema, records)
 
@@ -45,7 +45,7 @@ def test_json():
         'list': [1, 2, 3, 4, 5],
         'president': {'name': 'Zaphod Beeblebrox', 'species': 'Betelgeusian', 'just_number': 2}
     }
-    path = 'file.json'
+    path = 'example.json'
 
     json.write_data(path, data)
 
@@ -60,7 +60,7 @@ def test_json():
 
 def test_csv():
     data = [['Name', 'Age'], ['ItYaS', '16'], ['Dore', '13']]
-    path = 'file.csv'
+    path = 'example.csv'
 
     csv.write_data(path, data)
 
@@ -74,38 +74,38 @@ def test_csv():
 
 
 def test_pdf():
-    path = 'file.pdf'
+    path = 'example.pdf'
 
     result_text = pdf.get_text(path)
     print(f'result: {result_text}')
 
-    found_text = pdf.find_text(path, ['ItYaS'])
+    found_text = pdf.find_text(path, ['World'])
     print(f'found: {found_text}\n')
 
 
 def test_docx():
-    path = 'file.docx'
+    path = 'example.docx'
 
     result_text = docx.get_text(path)
     print(f'result: {result_text}')
 
-    found_text = docx.find_text(path, ['ItYaS'])
+    found_text = docx.find_text(path, ['World'])
     print(f'found: {found_text}\n')
 
 
 def test_rtf():
-    text = ['Hello World.', 'It is ItYaS!']
-    path = 'file.rtf'
+    text = ['Hello World. ', 'It is ItYaS!']
+    path = 'example.rtf'
 
     rtf.write_text(path, text)
 
     result_text = rtf.get_text(path)
     print(result_text)
 
-    found_text = rtf.find_text(path, ['ItYaS'])
+    found_text = rtf.find_text(path, ['World'])
     print(f'found: {found_text}')
 
-    rtf.replace_text(path, path, {'World': 'World!'})
+    rtf.replace_text(path, path, {'ItYaS!': 'ItYaS.'})
 
     result_text = rtf.get_text(path)
     print(f'result: {result_text}\n')
@@ -113,17 +113,17 @@ def test_rtf():
 
 def test_txt():
     text = ['Hello World.', 'It is ItYaS!']
-    path = 'file.txt'
+    path = 'example.txt'
 
     txt.write_text(path, text)
 
     result_text = txt.get_text(path)
     print(result_text)
 
-    found_text = txt.find_text(path, ['ItYaS'])
+    found_text = txt.find_text(path, ['World'])
     print(f'found: {found_text}')
 
-    txt.replace_text(path, path, {'World': 'World!'})
+    txt.replace_text(path, path, {'ItYaS!': 'ItYaS.'})
 
     result_text = txt.get_text(path)
     print(f'result: {result_text}\n')

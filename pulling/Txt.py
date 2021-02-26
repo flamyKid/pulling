@@ -64,7 +64,8 @@ def replace_text(path, new_path, replacement_dict, coding='utf-8', new_coding='u
             all_text += elem
 
         edit_line = all_text.strip()  # удаление пробелов в начале и конце предложения
-        edit_line += '.'  # добавление точки в конец предложения
+        if edit_line[-1] != '.' and edit_line[-1] != '!' and edit_line[-1] != '?' and edit_line[-1] != ';':
+            edit_line += '.'  # добавление точки в конец предложения
 
         index = text_list.index(string)
         text_list[index] = edit_line  # изменение строки на редактированную строку
