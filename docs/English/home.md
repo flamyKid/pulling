@@ -6,6 +6,8 @@ To start using the repository, first install python from its [official page](htt
 After that, install the pulling package through the console.
 
 > **> pip install pulling**
+ 
+You can see examples of the use of pulling in test/pulling_test.py.
 
 ## Future
 Such a repository can be extended for life. That's what I will do. 
