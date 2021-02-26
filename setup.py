@@ -2,7 +2,7 @@ from setuptools import setup
 from os.path import join, dirname
 
 setup(name='pulling',
-      version='1.4.2',
+      version='1.4.1',
       packages=['pulling'],
       license='Apache License 2.0',
       author='ItYaS',
