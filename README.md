@@ -6,8 +6,10 @@ The repository now supports .txt .rtf .pdf .docx .csv .avro .json formats.
 To start using the repository, first install python from its [official page](https://www.python.org/downloads/). 
 After that, install the pulling package through the console. 
 
-> **> pip install pulling**
- 
+```python
+pip install pulling
+``` 
+
 You can see examples of the use of pulling in [test/pulling_test.py](https://github.com/ItYaS/pulling/blob/master/tests/pulling_test.py).
 
 ## Future
