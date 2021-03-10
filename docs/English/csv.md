@@ -1,9 +1,11 @@
 # The .csv format
 Call the functions of this format:
 
-> **import pulling.Csv as csv**
->
-> **csv.function(arguments)**
+```python
+import pulling.Csv as csv
+
+csv.function(arguments)
+```
 ## Possible methods:
 **get_data(** *path* **)** is a function that returns data from a file as a list, where each sublist is a row from the file and the sublist elements are columns in a row.
 

@@ -4,7 +4,9 @@
 Что бы начать пользоваться репозиторием, для начала установите python c его [официальной страницы](https://www.python.org/downloads/). 
 После установите пакет pulling через консоль.
 
-> **> pip install pulling**
+```
+pip install pulling
+```
  
 Вы можете посмотреть примеры использования pulling в test/pulling_test.py.
 

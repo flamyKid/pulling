@@ -1,9 +1,11 @@
 # The .docx format
 Call the functions of this format:
 
-> **import pulling.Docx as docx**
->
-> **docx.function(arguments)**
+```python
+import pulling.Docx as docx
+
+docx.function(arguments)
+```
 ## Possible methods:
 **get_text(** *path* **)** is a function that returns text from a file as a list, where list elements are sentences in the file.
 

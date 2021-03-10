@@ -1,9 +1,11 @@
 # The .rtf format
 Call the functions of this format:
 
-> **import pulling.Rtf as rtf**
->
-> **rtf.function(arguments)**
+```python
+import pulling.Rtf as rtf
+
+rtf.function(arguments)
+```
 ## Possible methods:
 **get_text(** *path*, *coding='utf-8'* **)** is a function that returns text from a file as a list, where list elements are sentences in the file.
 
