@@ -4,7 +4,8 @@
 ```python
 import pulling.Rtf as rtf
 
-rtf.функция(аргументы)
+rtf.function(arguments)
+result = rtf.function(arguments)
 ```
 ## Возможные методы:
 **get_text(** *path*, *coding='utf-8'* **)** - функция, которая возвращает текст из файла, в виде списка, где элементы списка - это предложения в файле.

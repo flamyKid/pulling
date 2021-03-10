@@ -5,6 +5,7 @@ Call the functions of this format:
 import pulling.Json as json
 
 json.function(arguments)
+result = json.function(arguments)
 ```
 ## Possible methods:
 **get_data(** *path* **)** is a function that returns data from a file as a data dictionary.

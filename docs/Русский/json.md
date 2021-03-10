@@ -4,7 +4,8 @@
 ```python
 import pulling.Json as json
  
-json.функция(аргументы)
+json.function(arguments)
+result = json.function(arguments)
 ```
 ## Возможные методы:
 **get_data(** *path* **)** - функция, которая возвращает данные из файла, в виде словаря с данными.

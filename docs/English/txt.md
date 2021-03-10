@@ -5,6 +5,7 @@ Call the functions of this format:
 import pulling.Txt as txt
 
 txt.function(arguments)
+result = txt.function(arguments)
 ```
 ## Possible methods:
 **get_text(** *path*, *coding='utf-8'* **)** is a function that returns text from a file as a list, where list elements are sentences in the file.

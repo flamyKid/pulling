@@ -4,7 +4,8 @@
 ```python
 import pulling.Txt as txt
 
-txt.функция(аргументы)
+txt.function(arguments)
+result = txt.function(arguments)
 ```
 ## Возможные методы:
 **get_text(** *path*, *coding='utf-8'* **)** - функция, которая возвращает текст из файла, в виде списка, где элементы списка - это предложения в файле.

@@ -4,7 +4,8 @@
 ```python
 import pulling.Pdf as pdf
 
-pdf.функция(аргументы)
+pdf.function(arguments)
+result = pdf.function(arguments)
 ```
 ##Возможные методы:
 **get_text(** *path* **)** - функция, которая возвращает текст из файла, в виде списка, где элементы списка - это предложения в файле.

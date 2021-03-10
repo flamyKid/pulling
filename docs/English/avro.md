@@ -5,6 +5,7 @@ Call the functions of this format:
 import pulling.Avro as avro
 
 avro.function(arguments)
+result = avro.function(arguments)
 ```
 ## Possible methods:
 **get_data(** *path*, *schema* **)** is a function that returns data from a file as a list, where list elements are dictionaries in the file.

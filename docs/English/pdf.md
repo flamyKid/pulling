@@ -5,6 +5,7 @@ Call the functions of this format:
 import pulling.Pdf as pdf
 
 pdf.function(arguments)
+result = pdf.function(arguments)
 ```
 ## Possible methods:
 **get_text(** *path* **)** is a function that returns text from a file as a list, where list elements are sentences in the file.

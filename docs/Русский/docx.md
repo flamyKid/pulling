@@ -4,7 +4,8 @@
 ```python
 import pulling.Docx as docx
 
-docx.функция(аргументы)
+docx.function(arguments)
+result = docx.function(arguments)
 ```
 ## Возможные методы:
 **get_text(** *path* **)** - функция, которая возвращает текст из файла, в виде списка, где элементы списка - это предложения в файле.

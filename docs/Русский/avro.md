@@ -4,7 +4,8 @@
 ```python
 import pulling.Avro as avro
 
-avro.функция(аргументы)
+avro.function(arguments)
+result = avro.function(arguments)
 ```
 ## Возможные методы:
 **get_data(** *path*, *schema* **)** - функция, которая возвращает данные из файла, в виде списка, где элементы списка - это словари в файле.
