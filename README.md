@@ -24,4 +24,4 @@ You can support me in my profiles:
 
 gmail - ryaboshapkoseraph@gmail.com
 
-github - [https://github.com/ItYaS](https://github.com/ItYaS)
+github - [https://github.com/ityas](https://github.com/ityas)
