@@ -1,5 +1,5 @@
 # Pulling
-**Pulling** is an open source python repository for working with files of different extensions. Documentation in English can be found [here](https://github.com/ItYaS/pulling/wiki).
+**Pulling** is an open source python package for working with files of different extensions. Documentation in English can be found [here](https://github.com/ItYaS/pulling/wiki).
 The repository now supports .txt .rtf .pdf .docx .csv .avro .json formats.
 
 ## Install
