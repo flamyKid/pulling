@@ -46,7 +46,6 @@ def write_data(path, schema, data_list, mode='wb'):
 
 
 def replace_data(path, schema, new_path, replacement_dict):
-
     # функция для изменения имени ключа файла в схеме во избежание ValueError
     # если не изменить схему, то поменять имя ключа в файле нельзя будет
     def replace_schema(old_key, new_key):
