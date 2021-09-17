@@ -34,7 +34,7 @@ def find_data(path, pattern_list):
             if match:
                 if parent:
                     # блок try на случай, если элемента с таким именем не было еще
-                    try:  # если совпадений на этот шаблон есть
+                    try:  # если совпадения на этот шаблон есть
                         match_dict[pattern].append(parent)
                     except KeyError:  # если совпадений на этот шаблон нет
                         match_dict[pattern] = [parent]
